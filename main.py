@@ -2,13 +2,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from app.routes.agent_routes import router as agent_router
 
-# Database setup
-from app.database import Base, engine
-from app.models import Agent, TaskProgress, SubmittedForm, AgentSession
+# Import your local modules (now in same directory)
+from agent_routes import router as agent_router
+from database import Base, engine
+from models import Agent, TaskProgress, SubmittedForm, AgentSession
 
 import os
+
+# Rest of your code stays the same...
 PORT = int(os.environ.get("PORT", 8000))
 ENVIRONMENT = os.environ.get("RAILWAY_ENVIRONMENT", "development")
 
